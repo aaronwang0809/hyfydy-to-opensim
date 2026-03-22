@@ -1,0 +1,580 @@
+{
+  "model": [
+    {
+      "name": "human_planar_torque_biped",
+      "gravity": [
+        0,
+        -9.81,
+        0
+      ],
+      "body": [
+        {
+          "name": "pelvis",
+          "mass": 11.0,
+          "inertia": [
+            0.2,
+            0.2,
+            0.2
+          ],
+          "pos": [
+            0,
+            1.05,
+            0
+          ],
+          "ori": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "torso",
+          "mass": 32.0,
+          "inertia": [
+            0.6,
+            0.6,
+            0.6
+          ],
+          "pos": [
+            0,
+            1.35,
+            0
+          ],
+          "ori": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "mass": 8.5,
+          "inertia": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "pos": [
+            0.08,
+            0.92,
+            0
+          ]
+        },
+        {
+          "name": "shank_r",
+          "mass": 3.7,
+          "inertia": [
+            0.05,
+            0.05,
+            0.05
+          ],
+          "pos": [
+            0.08,
+            0.55,
+            0
+          ]
+        },
+        {
+          "name": "foot_r",
+          "mass": 1.2,
+          "inertia": [
+            0.02,
+            0.02,
+            0.02
+          ],
+          "pos": [
+            0.14,
+            0.12,
+            0
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "mass": 8.5,
+          "inertia": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "pos": [
+            -0.08,
+            0.92,
+            0
+          ]
+        },
+        {
+          "name": "shank_l",
+          "mass": 3.7,
+          "inertia": [
+            0.05,
+            0.05,
+            0.05
+          ],
+          "pos": [
+            -0.08,
+            0.55,
+            0
+          ]
+        },
+        {
+          "name": "foot_l",
+          "mass": 1.2,
+          "inertia": [
+            0.02,
+            0.02,
+            0.02
+          ],
+          "pos": [
+            -0.14,
+            0.12,
+            0
+          ]
+        },
+        {
+          "name": "ground",
+          "mass": 0,
+          "inertia": [
+            0,
+            0,
+            0
+          ],
+          "pos": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "joint": [
+        {
+          "name": "pelvis_ground",
+          "parent": "ground",
+          "child": "pelvis",
+          "pos_in_parent": [
+            0,
+            1.05,
+            0
+          ],
+          "pos_in_child": [
+            0,
+            0,
+            0
+          ],
+          "stiffness": 20000,
+          "damping": 200,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -45,
+                45
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lumbar",
+          "parent": "pelvis",
+          "child": "torso",
+          "pos_in_parent": [
+            0,
+            0.2,
+            0
+          ],
+          "pos_in_child": [
+            0,
+            -0.25,
+            0
+          ],
+          "stiffness": 40000,
+          "damping": 400,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -25,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "name": "hip_r",
+          "parent": "pelvis",
+          "child": "thigh_r",
+          "pos_in_parent": [
+            0.08,
+            -0.1,
+            0
+          ],
+          "pos_in_child": [
+            0,
+            0.22,
+            0
+          ],
+          "stiffness": 50000,
+          "damping": 500,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -45,
+                60
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knee_r",
+          "parent": "thigh_r",
+          "child": "shank_r",
+          "pos_in_parent": [
+            0,
+            -0.25,
+            0
+          ],
+          "pos_in_child": [
+            0,
+            0.2,
+            0
+          ],
+          "stiffness": 60000,
+          "damping": 600,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -130,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ankle_r",
+          "parent": "shank_r",
+          "child": "foot_r",
+          "pos_in_parent": [
+            0,
+            -0.22,
+            0
+          ],
+          "pos_in_child": [
+            -0.02,
+            0.06,
+            0
+          ],
+          "stiffness": 50000,
+          "damping": 500,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -35,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "name": "hip_l",
+          "parent": "pelvis",
+          "child": "thigh_l",
+          "pos_in_parent": [
+            -0.08,
+            -0.1,
+            0
+          ],
+          "pos_in_child": [
+            0,
+            0.22,
+            0
+          ],
+          "stiffness": 50000,
+          "damping": 500,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -45,
+                60
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knee_l",
+          "parent": "thigh_l",
+          "child": "shank_l",
+          "pos_in_parent": [
+            0,
+            -0.25,
+            0
+          ],
+          "pos_in_child": [
+            0,
+            0.2,
+            0
+          ],
+          "stiffness": 60000,
+          "damping": 600,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -130,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ankle_l",
+          "parent": "shank_l",
+          "child": "foot_l",
+          "pos_in_parent": [
+            0,
+            -0.22,
+            0
+          ],
+          "pos_in_child": [
+            -0.02,
+            0.06,
+            0
+          ],
+          "stiffness": 50000,
+          "damping": 500,
+          "limits": [
+            {
+              "x": [
+                0,
+                0
+              ],
+              "y": [
+                0,
+                0
+              ],
+              "z": [
+                -35,
+                25
+              ]
+            }
+          ]
+        }
+      ],
+      "composite_force": [
+        {
+          "planar_joint_force_pnld": [
+            {}
+          ],
+          "simple_collision_detection": [
+            {}
+          ],
+          "contact_force_hunt_crossley_sb": [
+            {
+              "transition_velocity": 0.1
+            }
+          ]
+        }
+      ],
+      "joint_motor": [
+        {
+          "joint": "lumbar",
+          "stiffness": 800,
+          "damping": 20,
+          "max_torque": 150,
+          "target_ori": [
+            0,
+            0,
+            0
+          ],
+          "target_vel": [
+            0,
+            0,
+            0
+          ],
+          "torque_offset": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "joint": "hip_r",
+          "stiffness": 600,
+          "damping": 18,
+          "max_torque": 200,
+          "target_ori": [
+            0,
+            0,
+            10
+          ],
+          "target_vel": [
+            0,
+            0,
+            0
+          ],
+          "torque_offset": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "joint": "knee_r",
+          "stiffness": 600,
+          "damping": 18,
+          "max_torque": 200,
+          "target_ori": [
+            0,
+            0,
+            -20
+          ],
+          "target_vel": [
+            0,
+            0,
+            0
+          ],
+          "torque_offset": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "joint": "ankle_r",
+          "stiffness": 400,
+          "damping": 14,
+          "max_torque": 120,
+          "target_ori": [
+            0,
+            0,
+            5
+          ],
+          "target_vel": [
+            0,
+            0,
+            0
+          ],
+          "torque_offset": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "joint": "hip_l",
+          "stiffness": 600,
+          "damping": 18,
+          "max_torque": 200,
+          "target_ori": [
+            0,
+            0,
+            -10
+          ],
+          "target_vel": [
+            0,
+            0,
+            0
+          ],
+          "torque_offset": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "joint": "knee_l",
+          "stiffness": 600,
+          "damping": 18,
+          "max_torque": 200,
+          "target_ori": [
+            0,
+            0,
+            -20
+          ],
+          "target_vel": [
+            0,
+            0,
+            0
+          ],
+          "torque_offset": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "joint": "ankle_l",
+          "stiffness": 400,
+          "damping": 14,
+          "max_torque": 120,
+          "target_ori": [
+            0,
+            0,
+            5
+          ],
+          "target_vel": [
+            0,
+            0,
+            0
+          ],
+          "torque_offset": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

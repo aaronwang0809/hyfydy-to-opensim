@@ -1,0 +1,1 @@
+Code is python Conversion.py --in [hfd file] --out [osim file] --dump-json parsed.json --verbose
