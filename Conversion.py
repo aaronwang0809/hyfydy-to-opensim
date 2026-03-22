@@ -16,11 +16,6 @@ What it does well:
 - Extracts model name / gravity, bodies, joints (best-effort).
 - Writes a valid OpenSim XML skeleton + body/joint sets.
 
-What you'll extend later:
-- Muscle/actuator mapping (ForceSet)
-- Wrap objects, geometry, contacts, constraints, controllers
-- Precise joint frame math / orientations
-
 This file is intentionally dependency-free (stdlib only).
 """
 
